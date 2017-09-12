@@ -1,0 +1,12 @@
+.acme-product-image {
+    width: 50px;
+    margin: 2px;
+}
+
+.acme-row {
+    float: left;
+}
+
+.filter {
+    margin-left: 25px;
+}

@@ -2,14 +2,14 @@
     <div class="panel-heading">{{pageTitle}}</div>
     <div class="panel-body">
         <div class="row">
-            <div class="col-md-2">Filter by:</div>
+            <div class="col-md-2" class="acme-row filter">Filter by:</div>
             <div class="col-md-4">
                 <input type="text" />
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
-                <h3>Filtered by: </h3>
+            <div class="col-md-6" class="acme-row filter">
+                <h3>Filtered by:</h3>
             </div>
         </div>
         <div class="table-responsive">
@@ -17,7 +17,7 @@
                 <thead>
                     <tr>
                         <th>
-                            <button type="button" class="btn btn-primary">Show Image</button>
+                            <button type="button" class="btn btn-primary" (click)=toggleImage($event)>Show Images</button>
                         </th>
                         <th>Product</th>
                         <th>Code</th>
@@ -28,7 +28,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let product of products">
-                        <th></th>
+                        <th><img *ngIf=isImageDisplayed [src]="product.imageUrl" [title]="product.productName" class="acme-product-image" /></th>
                         <th>{{product.productName}}</th>
                         <th>{{product.productCode}}</th>
                         <th>{{product.releaseDate}}</th>

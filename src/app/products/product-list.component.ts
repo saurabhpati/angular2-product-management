@@ -2,10 +2,12 @@ import { Component } from "@angular/core";
 
 @Component({
     selector: 'pm-products',
-    templateUrl: './product-list.component.html'
+    templateUrl: './product-list.component.html',
+    styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent {
-    private pageTitle:String = 'Product List';
+    private pageTitle: String = 'Product List';
+    private isImageDisplayed: Boolean = false;
     private products: any[] = [
         {
             "productId": 1,
@@ -58,4 +60,16 @@ export class ProductListComponent {
             "imageUrl": "http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
         }
     ]
+
+    /**
+     * Toggles i.e. shows and hides images on click of the button.
+     * @param event The click event object.
+     */
+    private toggleImage(event): void {
+        this.isImageDisplayed = !this.isImageDisplayed;
+
+        if (event && event.target) {
+            event.target.innerText = this.isImageDisplayed ? 'Hide Images' : 'Show Images';
+        }
+    }
 }
