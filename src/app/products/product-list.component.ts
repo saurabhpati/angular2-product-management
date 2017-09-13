@@ -7,6 +7,7 @@ import { Component } from "@angular/core";
 })
 export class ProductListComponent {
     private pageTitle: String = 'Product List';
+    private listFilter = '';
     private isImageDisplayed: Boolean = false;
     private products: any[] = [
         {

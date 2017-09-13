@@ -4,12 +4,12 @@
         <div class="row">
             <div class="col-md-2" class="acme-row filter">Filter by:</div>
             <div class="col-md-4">
-                <input type="text" />
+                <input type="text" [(ngModel)] = 'listFilter' />
             </div>
         </div>
         <div class="row">
             <div class="col-md-6" class="acme-row filter">
-                <h3>Filtered by:</h3>
+                <h3>Filtered by: {{listFilter}}</h3>
             </div>
         </div>
         <div class="table-responsive">
@@ -32,7 +32,7 @@
                         <th>{{product.productName}}</th>
                         <th>{{product.productCode}}</th>
                         <th>{{product.releaseDate}}</th>
-                        <th>{{product.price}}</th>
+                        <th>{{product.price | currency: 'USD': true: '1.2-2'}}</th>
                         <th>{{product.starRating}}</th>
                     </tr>
                 </tbody>
