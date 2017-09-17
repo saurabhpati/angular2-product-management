@@ -104,7 +104,7 @@ export class ProductListComponent implements OnInit {
      * Establishes life cycle hook for product list component.
      */
     ngOnInit(): void {
-
+        // No implementation as of now.
     }
 
     /**

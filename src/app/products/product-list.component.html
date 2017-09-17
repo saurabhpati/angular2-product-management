@@ -33,7 +33,7 @@
                         <th>{{product.productCode | lowercase | convertToSpace: '-'}}</th>
                         <th>{{product.releaseDate}}</th>
                         <th>{{product.price | currency: 'USD': true: '1.2-2'}}</th>
-                        <th>{{product.starRating}}</th>
+                        <th><pm-star [rating]="product.starRating"></pm-star></th>
                     </tr>
                 </tbody>
             </table>
