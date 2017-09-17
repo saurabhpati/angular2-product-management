@@ -10,13 +10,13 @@ import { Component, OnChanges, SimpleChanges, Input, EventEmitter, Output } from
  */
 export class StarComponent implements OnChanges {
     @Input() private rating: number;
-    private starWidth: number;
     @Output() private ratingEmitter : EventEmitter<string>;
+    private starWidth: number;
 
     /**
-     * Constructor to initialize the star component
+     * Constructor to initialize the star component.
      */
-    constructor() {
+    public constructor() {
         this.ratingEmitter = new EventEmitter<string>();
     }
 
