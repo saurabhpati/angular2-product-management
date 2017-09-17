@@ -27,10 +27,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let product of products">
+                    <tr *ngFor="let product of filteredProducts">
                         <th><img *ngIf=isImageDisplayed [src]="product.imageUrl" [title]="product.productName" class="acme-product-image" /></th>
                         <th>{{product.productName}}</th>
-                        <th>{{product.productCode}}</th>
+                        <th>{{product.productCode | lowercase | convertToSpace: '-'}}</th>
                         <th>{{product.releaseDate}}</th>
                         <th>{{product.price | currency: 'USD': true: '1.2-2'}}</th>
                         <th>{{product.starRating}}</th>

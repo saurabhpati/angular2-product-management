@@ -10,17 +10,39 @@ import { IProduct } from "./product";
  * Angular component for list of products.
  */
 export class ProductListComponent implements OnInit {
-    private pageTitle: String;
-    private listFilter: String;
+    private _listFilter: string;
+    private pageTitle: string;
     private isImageDisplayed: Boolean;
     private products: IProduct[];
+    private filteredProducts: IProduct[];
+
+    /**
+     * Gets the list of filters by which the products list is being filtered by.
+     */
+    private get listFilter(): string {
+        return this._listFilter;
+    }
+
+    /**
+     * Sets the list of filters by which the products list is being filtered by.
+     */
+    private set listFilter(value: string) {
+        this._listFilter = value.toLowerCase();
+        this.filteredProducts = this.listFilter ?
+            this.products.filter(product => this._filterBy(product.productName)) : this.products;
+        
+        // If the filtered products are not found by name, find it by product code.
+        if (this.filteredProducts && !this.filteredProducts.length) {
+            this.filteredProducts = this.products.filter(product => this._filterBy(product.productCode));
+        }
+        
+    }
 
     /**
      * Initializes the product list component. 
      */
     constructor() {
         this.pageTitle = 'Product List';
-        this.listFilter = '';
         this.isImageDisplayed = false;
         this.products = [
             {
@@ -73,19 +95,21 @@ export class ProductListComponent implements OnInit {
                 "starRating": 4.6,
                 "imageUrl": "http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
             }
-        ]
+        ];
+        this.filteredProducts = this.products;
+        //this.listFilter = '';
     }
 
     /**
      * Establishes life cycle hook for product list component.
      */
     ngOnInit(): void {
-        // Does not implement anything as of now.
+
     }
 
     /**
      * Toggles i.e. shows and hides images on click of the button.
-     * @param event The click event object.
+     * @param event {Object} The click event object.
      */
     private toggleImage(event): void {
         this.isImageDisplayed = !this.isImageDisplayed;
@@ -93,5 +117,18 @@ export class ProductListComponent implements OnInit {
         if (event && event.target) {
             event.target.innerText = this.isImageDisplayed ? 'Hide Images' : 'Show Images';
         }
+    }
+
+    /**
+     * Filters the filteree by list filter value.
+     * @param filteree The value that is being filtered.
+     */
+    private _filterBy(filteree: string): Boolean {
+        if (!filteree) {
+            return false;
+        }
+
+        filteree = filteree.toLowerCase();
+        return filteree.indexOf(this.listFilter) !== -1;
     }
 }

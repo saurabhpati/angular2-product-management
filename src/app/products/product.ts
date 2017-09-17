@@ -3,11 +3,11 @@
  */
 export interface IProduct {
     productId: Number;
-    productName: String;
-    productCode: String;
-    releaseDate: String;
-    description: String;
+    productName: string;
+    productCode: string;
+    releaseDate: string;
+    description: string;
     price: Number;
     starRating: Number;
-    imageUrl: String;
+    imageUrl: string;
 }
