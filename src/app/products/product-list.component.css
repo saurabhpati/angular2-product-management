@@ -10,3 +10,7 @@
 .filter {
     margin-left: 25px;
 }
+
+thead {
+    color: #3b7773
+}
