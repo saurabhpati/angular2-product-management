@@ -97,7 +97,6 @@ export class ProductListComponent implements OnInit {
             }
         ];
         this.filteredProducts = this.products;
-        //this.listFilter = '';
     }
 
     /**
@@ -117,6 +116,18 @@ export class ProductListComponent implements OnInit {
         if (event && event.target) {
             event.target.innerText = this.isImageDisplayed ? 'Hide Images' : 'Show Images';
         }
+    }
+
+    /**
+     * The event fired when rating is clicked from the nested component.
+     * @param $event The data emitted from the nested component.
+     */
+    private onRatingClick($event): void {
+        if (!$event) {
+            return;
+        }
+
+        this.pageTitle += $event;
     }
 
     /**
