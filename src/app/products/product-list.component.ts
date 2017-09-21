@@ -13,6 +13,7 @@ import { ProductService } from "./products.service";
 export class ProductListComponent implements OnInit {
     private _listFilter: string;
     private pageTitle: string;
+    private _errorMessage: string
     private isImageDisplayed: Boolean;
     private products: IProduct[];
     private filteredProducts: IProduct[];
@@ -51,8 +52,10 @@ export class ProductListComponent implements OnInit {
      * Establishes life cycle hook for product list component.
      */
     public ngOnInit(): void {
-        this.products = this.productService.getProducts();
-        this.filteredProducts = this.products;
+        this.productService.getProducts().subscribe(products => {
+            this.products = products;
+            this.filteredProducts = this.products;
+        }, error => this._errorMessage = <any>error);
     }
 
     /**
