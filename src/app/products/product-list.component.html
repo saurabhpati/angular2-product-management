@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-2" class="acme-row filter">Filter by:</div>
             <div class="col-md-4">
-                <input type="text" [(ngModel)] = 'listFilter' />
+                <input type="text" [(ngModel)]='listFilter' />
             </div>
         </div>
         <div class="row">
@@ -28,8 +28,10 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let product of filteredProducts">
-                        <th><img *ngIf=isImageDisplayed [src]="product.imageUrl" [title]="product.productName" class="acme-product-image" /></th>
-                        <th>{{product.productName}}</th>
+                        <th>
+                            <img *ngIf=isImageDisplayed [src]="product.imageUrl" [title]="product.productName" class="acme-product-image" />
+                        </th>
+                        <th><a [routerLink]="['/products', product.productId]">{{product.productName}}</a></th>
                         <th>{{product.productCode | lowercase | convertToSpace: '-'}}</th>
                         <th>{{product.releaseDate}}</th>
                         <th>{{product.price | currency: 'USD': true: '1.2-2'}}</th>

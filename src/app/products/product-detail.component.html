@@ -1,5 +1,18 @@
-<div class="panel panel-primary" *ngIf="product">
+<!-- <div class="panel panel-primary" *ngIf="product">
   <div class="panel-heading">
     {{pageTitle + ': ' + product.productName}}
   </div>
+</div> -->
+
+<div class="panel panel-primary">
+    <div class="panel-heading">{{pageTitle}}</div>
+    <div class="panel-body">
+      <div class="row"><img class="acme-product-image" src={{product.imageUrl}}></div>
+      <div class="row">{{product.productName}}</div>
+      <div class="row">{{product.productCode}}</div>
+      <div class="row">{{product.releaseDate}}</div>
+      <div class="row">{{product.description}}</div>
+      <div class="row">{{product.price}}</div>
+      <div class="row">{{product.starRating}}</div>
+    </div>
 </div>

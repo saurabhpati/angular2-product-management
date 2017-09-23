@@ -4,7 +4,7 @@ import { ProductService } from "./products.service";
 
 @Component({
     templateUrl: './product-list.component.html',
-    styleUrls: ['./product-list.component.css']
+    styleUrls: ['./product-list.component.css', '../shared/product-image.css']
 })
 /**
  * Angular component for list of products.
