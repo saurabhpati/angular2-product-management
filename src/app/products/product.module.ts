@@ -1,27 +1,24 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { StarComponent } from '../shared/star.component';
 import { ProductDetailComponent } from './product-detail.component';
 import { ProductListComponent } from './product-list.component';
-import { FormsModule } from '@angular/forms';
 import { ConvertToSpacePipe } from '../shared/convert-to-space.pipe';
-import { RouterModule } from '@angular/router';
 import { ProductGuardService } from './product-guard.service';
 import { ProductService } from './products.service';
+import { SharedModule } from './../shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
     RouterModule.forChild([
       { path: 'products', component: ProductListComponent },
       { path: 'products/:id', canActivate: [ProductGuardService], component: ProductDetailComponent },
-    ])
+    ]),
+    SharedModule
   ],
   declarations: [
     ProductListComponent,
     ProductDetailComponent,
-    StarComponent,
     ConvertToSpacePipe
   ],
   providers: [
